@@ -28,4 +28,4 @@ const day6Part2 = async function (filePath) {
   return total;
 }
 
-console.log(day6Part2(process.argv[2]));
+day6Part2(process.argv[2]).then(res => console.log(res));

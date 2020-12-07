@@ -53,4 +53,4 @@ const day5Part2 = async function (filePath) {
   // return highest;
 }
 
-console.log(day5Part2(process.argv[2]));
+day5Part2(process.argv[2]).then(res => console.log(res));

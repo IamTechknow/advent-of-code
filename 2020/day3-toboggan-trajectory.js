@@ -1,8 +1,6 @@
 const fs = require('fs').promises;
 
-const checkSlopes = async function (filePath, c_slope, r_slope) {
-  const data = await fs.readFile(filePath, { encoding: 'utf8' });
-
+const checkSlopes = async function (data, c_slope, r_slope) {
   let strings = data.split("\n").filter(str => str.length > 0);
   const w = strings[0].length, h = strings.length;
   const grid = new Array(h);
@@ -33,11 +31,12 @@ const checkSlopes = async function (filePath, c_slope, r_slope) {
 }
 
 const results = [];
-const filePath = process.argv[2];
-results.push(checkSlopes(filePath, 1, 1));
-results.push(checkSlopes(filePath, 3, 1));
-results.push(checkSlopes(filePath, 5, 1));
-results.push(checkSlopes(filePath, 7, 1));
-results.push(checkSlopes(filePath, 1, 2));
-
-console.log(results.reduce((accum, curr) => accum * curr));
+fs.readFile(process.argv[2], { encoding: 'utf8' })
+  .then(data => {
+    results.push(checkSlopes(data, 1, 1));
+    results.push(checkSlopes(data, 3, 1));
+    results.push(checkSlopes(data, 5, 1));
+    results.push(checkSlopes(data, 7, 1));
+    results.push(checkSlopes(data, 1, 2));
+    console.log(results.reduce((accum, curr) => accum * curr));
+  });

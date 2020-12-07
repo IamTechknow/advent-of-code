@@ -83,4 +83,4 @@ const day4Solution = async function (filePath) {
   return numValid;
 }
 
-console.log(day4Solution(process.argv[2]));
+day4Solution(process.argv[2]).then(res => console.log(res));

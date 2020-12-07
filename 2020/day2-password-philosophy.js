@@ -25,4 +25,4 @@ const day2Solution = async function (filePath) {
   return good.length;
 }
 
-console.log(day2Solution(process.argv[2]));
+day2Solution(process.argv[2]).then(res => console.log(res));
